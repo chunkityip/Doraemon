@@ -1,5 +1,6 @@
 package aboutjava.zookeeper;
 
+import java.security.SecureRandom;
 import org.apache.zookeeper.*;
 
 import java.io.IOException;
@@ -91,7 +92,7 @@ public class AboutZookeeper {
                 CreateMode.EPHEMERAL_SEQUENTIAL);
 
         // wait一小会，便于观察
-        Thread.sleep(new Random().nextInt(1000));
+        Thread.sleep(new SecureRandom().nextInt(1000));
 
         // 从zk的锁父目录下，获取所有子节点，并且注册对父节点的监听
         List<String> childrenNodes = zk.getChildren("/" + groupNode, true);

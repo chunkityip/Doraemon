@@ -1,5 +1,6 @@
 package com.example.springdemo.springdemo.controller;
 
+import java.security.SecureRandom;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -55,7 +56,7 @@ public class CpuTestController {
     private Integer getNumFromMap(){
         List<KeyAndValueObject> keyAndValueObjects = DATA_MAP.get(1);
 
-        Random random = new Random();
+        Random random = new SecureRandom();
         int i = random.nextInt(10000);
         for(KeyAndValueObject data : keyAndValueObjects){
             if (data.getKey() == i){
