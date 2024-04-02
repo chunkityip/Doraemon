@@ -15,7 +15,7 @@ public class MyClassVisitor extends ClassVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor methodVisitor = super.visitMethod(access, name, desc, signature, exceptions);
-        if(name.equals("getAge")){
+        if("getAge".equals(name)){
             return new MyMethodVisitor(methodVisitor);
         }else {
             return methodVisitor;
