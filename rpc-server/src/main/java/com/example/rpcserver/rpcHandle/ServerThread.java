@@ -1,5 +1,6 @@
 package com.example.rpcserver.rpcHandle;
 
+import io.github.pixee.security.BoundedLineReader;
 import lombok.extern.log4j.Log4j;
 
 import java.io.BufferedReader;
@@ -27,7 +28,7 @@ public class ServerThread implements Runnable {
             boolean flag = true;
             while (flag) {
                 //接收从客户端发送过来的数据
-                String str = buf.readLine();
+                String str = BoundedLineReader.readLine(buf, 5_000_000);
                 if (str == null || "".equals(str)) {
                     flag = false;
                 } else {
