@@ -5,6 +5,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -65,7 +66,7 @@ public class GeneratePdf {
 
         BufferedReader br = new BufferedReader(new FileReader("/Users/hupengfei/Downloads/全球收款服务协议191112.txt"));
         String strLine;
-        while ((strLine = br.readLine()) != null) {
+        while ((strLine = BoundedLineReader.readLine(br, 5_000_000)) != null) {
             Paragraph para = new Paragraph(strLine + "\n", myfont);
             para.setAlignment(Element.ALIGN_JUSTIFIED);
             pdfDoc.add(para);
