@@ -1,5 +1,6 @@
 package aboutjava;
 
+import io.github.pixee.security.BoundedLineReader;
 import okhttp3.*;
 
 import java.io.*;
@@ -75,7 +76,7 @@ public class ChangePic {
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String str = "";
             StringBuilder sb = new StringBuilder();
-            while((str=bufferedReader.readLine())!=null){
+            while((str=BoundedLineReader.readLine(bufferedReader, 5_000_000))!=null){
                 sb.append(str);
                 sb.append(System.getProperty("line.separator"));
             }
