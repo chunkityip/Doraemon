@@ -1,5 +1,6 @@
 package aboutjava;
 
+import java.security.SecureRandom;
 import okhttp3.Call;
 import okhttp3.ConnectionPool;
 import okhttp3.OkHttpClient;
@@ -80,7 +81,7 @@ public class GenerateBuxuewushu {
         File file = new File(path);
         File[] files = file.listFiles();
         List<File> fileList = Arrays.stream(files).filter(file1 -> file1.getName().contains("bg")).collect(Collectors.toList());
-        Random random = new Random();
+        Random random = new SecureRandom();
         int i = random.nextInt(fileList.size());
         return fileList.get(i).getName();
     }
